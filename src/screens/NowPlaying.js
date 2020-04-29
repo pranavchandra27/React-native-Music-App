@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Image,
   TouchableOpacity,
+  StatusBar,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Slider from '@react-native-community/slider';
@@ -14,6 +15,7 @@ import {MusicContext} from '../context/MusicContext';
 import {floorVal, formatedTime} from '../utils/format';
 import {togglePlayback, skipToNext, skipToPrevious} from '../player/controls';
 import TrackPlayer, {usePlaybackState} from 'react-native-track-player';
+import LinearGradient from 'react-native-linear-gradient';
 
 const {width, height} = Dimensions.get('window');
 
@@ -23,17 +25,34 @@ const NowPlaying = ({navigation}) => {
 
   return (
     <View style={styles.trackContainer}>
-      {/* <View
+      <StatusBar backgroundColor="transparent" />
+      <View
         style={{
           zIndex: 1,
           position: 'absolute',
           top: 0,
           right: 0,
-          height: 75,
+          height: 80,
           width: width,
-          backgroundColor: 'rgba(0,0,0,0.05)',
-        }}
-      /> */}
+          backgroundColor: 'rgba(0,0,0,0.1)',
+        }}>
+        <View style={{flexDirection: 'row', marginTop: 40}}>
+          <TouchableOpacity
+            onPress={() => navigation.goBack()}
+            style={{marginLeft: 12}}>
+            <Icon name="arrow-back" size={24} color="#ffffff" />
+          </TouchableOpacity>
+          <Text
+            style={{
+              color: '#fff',
+              fontFamily: 'Lato-Regular',
+              fontSize: 20,
+              marginLeft: 35,
+            }}>
+            Now Playing
+          </Text>
+        </View>
+      </View>
       <View style={styles.coverContainer}>
         <Image
           source={!artwork ? defaultArtwork : {uri: artwork}}

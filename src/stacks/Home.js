@@ -42,24 +42,7 @@ const HomeStack = ({navigation}) => {
           name="Now Playing"
           component={NowPlaying}
           options={{
-            headerTintColor: '#FFF',
-            headerTitle: '',
-            headerTitleAlign: 'center',
-            headerTitleStyle: {
-              fontFamily: 'Lato-Regular',
-              fontSize: 16,
-            },
-            headerTransparent: true,
-            headerStyle: {
-              backgroundColor: '#333',
-            },
-            headerLeft: () => (
-              <TouchableOpacity
-                onPress={() => navigation.goBack()}
-                style={{...styles.margin}}>
-                <Icon name="arrow-back" size={24} color="#FFF" />
-              </TouchableOpacity>
-            ),
+            headerShown: false,
           }}
         />
       </Stack.Navigator>
